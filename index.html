@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Open2 Badges</title>
+    <meta name="description" content="Genera badges de evento en PNG y video." />
+  </head>
+  <body>
+    <main class="app">
+      <section class="preview">
+        <canvas id="canvas" aria-label="Vista previa del badge"></canvas>
+      </section>
+      <form class="controls" id="controls" autocomplete="off">
+        <header>
+          <h1>open2<span>/</span>badges</h1>
+          <p>PNG y video, todo en tu navegador. La foto nunca sale de tu equipo.</p>
+        </header>
+
+        <label class="field">
+          <span>Tema</span>
+          <select name="theme" id="theme"></select>
+        </label>
+
+        <label class="field">
+          <span>Nombre</span>
+          <input name="name" id="name" maxlength="48" />
+        </label>
+        <div class="row">
+          <label class="field">
+            <span>Rol</span>
+            <input name="role" id="role" maxlength="32" />
+          </label>
+          <label class="field">
+            <span>Equipo</span>
+            <input name="team" id="team" maxlength="40" placeholder="Opcional" />
+          </label>
+        </div>
+
+        <fieldset class="choices" id="kind">
+          <legend>Tipo</legend>
+          <label><input type="radio" name="kind" value="image" checked /><span>Imagen</span></label>
+          <label><input type="radio" name="kind" value="video" /><span>Video</span></label>
+        </fieldset>
+
+        <fieldset class="choices">
+          <legend>Formato</legend>
+          <label><input type="radio" name="format" value="story" checked /><span>Story 9:16</span></label>
+          <label><input type="radio" name="format" value="post" /><span>Post 4:5</span></label>
+        </fieldset>
+
+        <label class="button file">
+          <input type="file" id="photo" accept="image/*" />
+          <span id="photo-label">Subir foto</span>
+        </label>
+
+        <div class="sliders" id="sliders" hidden>
+          <label class="range"><span>Zoom</span><input type="range" id="zoom" min="1" max="3" step="0.05" value="1" /></label>
+          <label class="range"><span>Mover a los lados</span><input type="range" id="fx" min="-1" max="1" step="0.02" value="0" /></label>
+          <label class="range"><span>Mover arriba y abajo</span><input type="range" id="fy" min="-1" max="1" step="0.02" value="0" /></label>
+        </div>
+
+        <div class="progress" id="progress" hidden><span id="progress-bar"></span><em id="progress-label"></em></div>
+
+        <div class="actions">
+          <button type="button" class="button primary" id="share">Compartir</button>
+          <button type="button" class="button" id="download">Descargar</button>
+        </div>
+        <p class="error" id="error" role="alert"></p>
+      </form>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
